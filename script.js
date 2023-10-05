@@ -22,13 +22,18 @@ function generateQRCode() {
 
     // Add an event listener to the download link
     downloadLink.addEventListener("click", function() {
-        const link = document.createElement("a");
-        link.href = qrCodeUrl;
-        link.download = "qrcode.png";
-        link.style.display = "none";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        fetch(qrCodeUrl)
+            .then(response => response.blob())
+            .then(blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = "qrcode.png";
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            });
     });
 }
 
