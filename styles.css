@@ -1,19 +1,18 @@
 body {
     font-family: 'Poppins', Arial, sans-serif;
-    background: linear-gradient(to bottom, red, black);
+    background: transparent;
     text-align: center;
-    padding: 0;
-    color: white;
-    margin: 0;
+    padding: 20px;
+    color: black;
 }
 
 .container {
-    background-color: red;
+    background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    margin: 0 auto;
     max-width: 400px;
+    margin: 0 auto;
 }
 
 h1 {
@@ -28,7 +27,6 @@ input {
     border-radius: 5px;
     font-size: 16px;
     outline: none;
-    background: white; /* Set the background of the input to white */
 }
 
 button {
