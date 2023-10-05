@@ -13,12 +13,23 @@ function generateQRCode() {
 
     // Create a QR code element and append it to the container
     const qrCode = document.createElement("img");
-    qrCode.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&format=png&data=${encodeURIComponent(text)}`; // Specify format as PNG and size (e.g., 300x300)
+    const qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=350x350&data=" + encodeURIComponent(text);
+    qrCode.src = qrCodeUrl;
     qrCode.alt = "QR Code";
     qrCodeContainer.appendChild(qrCode);
 
     downloadLink.style.display = "inline-block";
-    downloadLink.href = qrCode.src;
+
+    // Add an event listener to the download link
+    downloadLink.addEventListener("click", function() {
+        const link = document.createElement("a");
+        link.href = qrCodeUrl;
+        link.download = "qrcode.png";
+        link.style.display = "none";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
 }
 
 document.getElementById("generateBtn").addEventListener("click", generateQRCode);
