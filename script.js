@@ -13,7 +13,7 @@ function generateQRCode() {
 
     // Create a QR code element and append it to the container
     const qrCode = document.createElement("img");
-    qrCode.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + encodeURIComponent(text);
+    qrCode.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&format=png&data=${encodeURIComponent(text)}`; // Specify format as PNG and size (e.g., 300x300)
     qrCode.alt = "QR Code";
     qrCodeContainer.appendChild(qrCode);
 
